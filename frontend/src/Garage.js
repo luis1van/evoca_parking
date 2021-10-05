@@ -21,11 +21,6 @@ constructor(props) {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  replace(array, new_array){
-    array = new_array;
-    return array;
-  }
-
   componentDidMount() {
     this.callApi()
       .then(res => this.setState((state) => {
@@ -50,7 +45,7 @@ constructor(props) {
     let location = assigner(this.state.available,this.state.value);
     this.setState((state) =>{
       state.available[location.row]=state.available[location.row]?.filter(spaces => spaces !== location.col)
-      return state.available[location.row];
+      return state.available;
     });
     e.preventDefault();
     const response = await fetch('/api/assigned', {
